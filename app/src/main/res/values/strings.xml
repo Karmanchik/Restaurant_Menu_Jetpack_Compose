@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Restaurant Menu</string>
+
+    <!-- bottom menu titles -->
+    <string name="bottom_all_menu">Меню</string>
+    <string name="bottom_my_orders">Заказ</string>
+    <string name="bottom_stocks">Акции</string>
+    <string name="bottom_actions">Действия</string>
+
+</resources>
