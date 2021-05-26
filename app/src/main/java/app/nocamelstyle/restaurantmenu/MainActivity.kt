@@ -64,7 +64,7 @@ private fun MainScreenNavigationConfigurations(
 ) {
     NavHost(navController, startDestination = BottomNavigationScreens.AllMenu.route) {
         composable(BottomNavigationScreens.AllMenu.route) {
-            AllMenuScreen(categories)
+            AllMenuScreen()
         }
         composable(BottomNavigationScreens.Order.route) {
             MyOrdersListScreen()
@@ -115,9 +115,15 @@ private fun currentRoute(navController: NavHostController): String? {
     return navBackStackEntry?.arguments?.getString(BottomNavigationScreens.AllMenu.route)
 }
 
-sealed class BottomNavigationScreens(val route: String, @StringRes val resourceId: Int, val icon: ImageVector) {
+sealed class BottomNavigationScreens(
+    val route: String,
+    @StringRes val resourceId: Int,
+    val icon: ImageVector
+) {
     object AllMenu : BottomNavigationScreens("menu", R.string.bottom_all_menu, Icons.Filled.Menu)
-    object Order : BottomNavigationScreens("order", R.string.bottom_my_orders, Icons.Filled.Favorite)
+    object Order :
+        BottomNavigationScreens("order", R.string.bottom_my_orders, Icons.Filled.Favorite)
+
     object Stocks : BottomNavigationScreens("stocks", R.string.bottom_stocks, Icons.Filled.Face)
     object Actions : BottomNavigationScreens("actions", R.string.bottom_actions, Icons.Filled.Star)
 }
