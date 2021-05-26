@@ -22,11 +22,18 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import app.nocamelstyle.restaurantmenu.retrofit.Setting
 import app.nocamelstyle.restaurantmenu.ui.theme.RestaurantMenuTheme
 
 class MainActivity : ComponentActivity() {
+
+    companion object {
+        var setting: Setting? = null
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setting = Setting(this)
         setContent {
             RestaurantMenuTheme {
                 // A surface container using the 'background' color from the theme

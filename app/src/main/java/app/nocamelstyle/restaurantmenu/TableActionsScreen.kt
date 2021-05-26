@@ -10,15 +10,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-var title = mutableStateOf("addfd")
-
 @Composable
 fun TableActionsScreen() {
-
-    var btn = remember {
-        title
-    }
-
     Scaffold {
         Column(
             Modifier
@@ -31,8 +24,8 @@ fun TableActionsScreen() {
                 Text(text = "Вызов официанта")
             }
             Spacer(modifier = Modifier.height(30.dp))
-            Button(onClick = { btn.value = "gg" }, Modifier.fillMaxWidth()) {
-                Text(text = "Попросить счет ${btn.value}")
+            Button(onClick = {}, Modifier.fillMaxWidth()) {
+                Text(text = "Попросить счет")
             }
             Spacer(modifier = Modifier.height(30.dp))
             Button(onClick = {}, Modifier.fillMaxWidth()) {

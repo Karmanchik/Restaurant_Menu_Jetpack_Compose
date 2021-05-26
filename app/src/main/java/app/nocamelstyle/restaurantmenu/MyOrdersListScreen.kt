@@ -1,36 +1,28 @@
 package app.nocamelstyle.restaurantmenu
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Menu
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import app.nocamelstyle.restaurantmenu.models.Product
+import app.nocamelstyle.restaurantmenu.retrofit.ApiRepository
+import app.nocamelstyle.restaurantmenu.ui.ProductItem
 
-@OptIn(ExperimentalMaterialApi::class)
+val orders = mutableStateOf(listOf<Product>())
+
 @Composable
 fun MyOrdersListScreen() {
 
-    Scaffold {
-        List(2) {
-            ListItem {
-                Row {
-                    Icon(imageVector = Icons.Filled.Menu, contentDescription = null)
-                    Column {
-                        Text(text = "Заголовок 1")
-                        Text(text = "Сообщение 1")
-                    }
-                }
-            }
-            ListItem {
-                Row {
-                    Icon(imageVector = Icons.Filled.Menu, contentDescription = null)
-                    Column {
-                        Text(text = "Заголовок 2")
-                        Text(text = "Сообщение 2")
-                    }
-                }
-            }
+    val data = remember { orders }
+
+    ApiRepository().loadProducts {
+        data.value = it?.filter { it.id in MainActivity.setting?.orderIds ?: listOf() } ?: listOf()
+    }
+
+    LazyColumn {
+        items(data.value) { product ->
+            ProductItem(product = product)
         }
     }
 }
