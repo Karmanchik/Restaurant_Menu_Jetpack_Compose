@@ -64,7 +64,7 @@ private fun MainScreenNavigationConfigurations(
 ) {
     NavHost(navController, startDestination = BottomNavigationScreens.AllMenu.route) {
         composable(BottomNavigationScreens.AllMenu.route) {
-            AllMenuScreen()
+            AllMenuScreen(categories)
         }
         composable(BottomNavigationScreens.Order.route) {
             MyOrdersListScreen()
