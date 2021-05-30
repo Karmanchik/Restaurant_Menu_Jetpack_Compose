@@ -25,6 +25,8 @@ import androidx.navigation.compose.rememberNavController
 import app.nocamelstyle.restaurantmenu.retrofit.Setting
 import app.nocamelstyle.restaurantmenu.ui.theme.RestaurantMenuTheme
 
+val isPreview = true
+
 class MainActivity : ComponentActivity() {
 
     companion object {

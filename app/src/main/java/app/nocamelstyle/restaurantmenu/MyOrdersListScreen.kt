@@ -7,7 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import app.nocamelstyle.restaurantmenu.models.Product
 import app.nocamelstyle.restaurantmenu.retrofit.ApiRepository
-import app.nocamelstyle.restaurantmenu.ui.ProductItem
+import app.nocamelstyle.restaurantmenu.ui.items.UIProductItem
 
 val orders = mutableStateOf(listOf<Product>())
 
@@ -22,7 +22,7 @@ fun MyOrdersListScreen() {
 
     LazyColumn {
         items(data.value) { product ->
-            ProductItem(product = product)
+            UIProductItem(product = product)
         }
     }
 }
